@@ -6,7 +6,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    niksi-devcontainer.url = "git+ssh://git@version.aalto.fi/niksi/niksi-devcontainer";
+    niksi-devcontainer.url = "github:niksi-aalto/niksi-devcontainer";
   };
   outputs = {
     self,
