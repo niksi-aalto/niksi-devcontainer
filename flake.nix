@@ -12,13 +12,22 @@
         },
       paths ? [],
       pathsToLink ? ["/bin" "/usr"],
-    }:
+    }: let
+      username = "niksi";
+    in
       pkgs.dockerTools.buildImage {
         inherit name tag fromImage;
         copyToRoot = pkgs.buildEnv {
           name = "env";
           inherit paths pathsToLink;
         };
+        runAsRoot = ''
+          #!${pkgs.runtimeShell}
+          ${pkgs.dockerTools.shadowSetup}
+          groupadd -r ${username}
+          useradd -r -g ${username} ${username}
+          chsh --shell ${pkgs.bash} ${username}
+        '';
       };
   };
 }
