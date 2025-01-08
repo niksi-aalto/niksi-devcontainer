@@ -19,7 +19,8 @@
         inherit name tag fromImage;
         copyToRoot = pkgs.buildEnv {
           name = "env";
-          inherit paths pathsToLink;
+          paths = paths ++ [pkgs.dockerTools.binSh];
+          inherit pathsToLink;
         };
         runAsRoot = ''
           #!${pkgs.runtimeShell}
