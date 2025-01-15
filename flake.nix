@@ -25,9 +25,8 @@
         runAsRoot = ''
           #!${pkgs.runtimeShell}
           ${pkgs.dockerTools.shadowSetup}
-          groupadd -r ${username}
-          useradd -r -g ${username} ${username}
-          chsh --shell ${pkgs.bash} ${username}
+          groupadd ${username}
+          useradd -m -g ${username} -s /usr/bin/bash ${username}
         '';
       };
   };
