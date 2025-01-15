@@ -17,6 +17,7 @@
     in
       pkgs.dockerTools.buildImage {
         inherit name tag fromImage;
+        diskSize = 1024 * 2;
         copyToRoot = pkgs.buildEnv {
           name = "env";
           paths = paths ++ [pkgs.dockerTools.binSh];
