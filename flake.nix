@@ -27,6 +27,7 @@
           #!${pkgs.runtimeShell}
           ${pkgs.dockerTools.shadowSetup}
           useradd -m -g users -s /usr/bin/bash ${username}
+          mkdir /workspaces
           chown -R ${username}:users /workspaces
         '';
       };
